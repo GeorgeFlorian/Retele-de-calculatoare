@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "clean:dist": "rimraf dist",
+    "clean:build": "rimraf build",
+    "start": "npm run clean:dist && parcel index.html --dist-dir ./dist",
+    "build": "npm run clean:build && parcel build index.html --dist-dir ./build --no-source-maps --no-cache"
+  },
+  "dependencies": {
+    "parcel": "^2.4.0",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "os-browserify": "^0.3.0"
+  }
+}

@@ -24,17 +24,25 @@ const xor = function (a, b) {
   return a ^ b;
 };
 
+const addToMarkup = function (text) {
+  text += text;
+  return text;
+};
+
 // crc(mesaj, polinom)
 export const crc = function (mesaj, polinom) {
-  // mesaj = '10010101'
+  let html = '';
+  html += `<p>Mesaj: <span>${mesaj}</span></p>`;
+  html += `<p>Polinom generator: <span>${polinom}</span></p>`;
   const mesaj_extins = mesaj.padEnd(mesaj.length + polinom.length - 1, '0');
-  // polinom = '1001';
+  html += `<p>Mesaj extins: <span>${mesaj_extins}</span></p>`;
   let rest_binary = mesaj_extins;
-  // rest_binary = '10010101000'
+  html += `<br>`;
+  html += `<p>${rest_binary}</p>`;
   const polinom_dec = toDecimal(polinom);
-  let resultat = 0;
-
+  let extra_space = `&nbsp;`;
   while (rest_binary.length >= polinom.length) {
+    html += `<p style="border-bottom: 5px solid red;">${polinom}</p>`;
     const first4bytes = rest_binary.slice(0, polinom.length);
     console.log('first4bytes', first4bytes);
 
@@ -50,8 +58,20 @@ export const crc = function (mesaj, polinom) {
     // Eliminam 0-urile de la inceput
     rest_binary = toDecimal(rest_binary);
     rest_binary = toBinary(rest_binary);
-    console.log(rest_binary);
+    html += `<p>${rest_binary}</p>`;
+    // console.log(rest_binary);
   }
 
-  return toBinary(xor(toDecimal(mesaj_extins), toDecimal(rest_binary))); // 100 1010 0001
+  html += `<p>R(x) = ${rest_binary}</p>`;
+  html += `<br>`;
+
+  const rezultat = toBinary(
+    xor(toDecimal(mesaj_extins), toDecimal(rest_binary))
+  );
+  html += `<p><span style="width=1px;">Mesaj extins initial T(x):</span><span>${mesaj_extins}</span></p>`;
+  html += `<p style="border-bottom: 5px solid red;">Rest R(x):<span style="width=1px;"></span><span>${rest_binary}</span></p>`;
+  html += `<p><span style="width=1px;">Mesaj extins final T(x):</span><span>${rezultat}</span></p>`;
+
+  return html;
 };
+// '11111001', '1101'

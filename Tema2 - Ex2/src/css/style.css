@@ -1,0 +1,79 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* End of CSS Reset */
+
+#container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  background-color: chocolate;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: orange;
+}
+
+.warning {
+  color: #ff0000;
+}
+
+.corect {
+  color: #00aa00 !important;
+}
+
+#mesaj {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 80px;
+  color: #ff0000;
+}
+
+#rezultat {
+  height: 200px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: wheat;
+}

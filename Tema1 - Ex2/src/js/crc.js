@@ -12,26 +12,6 @@ Se efectueaza succesiv operatii de XOR intre mesajul extins si coeficientii poli
 Se vor afisa rezultatele intermediare ale operatiei de XOR.
 Se executa iarasi operatia de XOR intre mesajul extins si restul final obtinut.
 Pozitionarea restului se va face sub finalul mesajului extins. Acest rezultat se va afisa.
-
-*/
-
-/*
-
-    1111 1001
-
-    x3 x2 1 -> x1=0 -> 1101  -> grad 3
-    __________________________
-    extind mesajul initial: 1111 1001 `000` -> 11111001000
-
-    11111001000
-    1101
-    ------------
-
-
-    
-    --------------------------
-    1 1111 0100 1000
-
 */
 
 const toBinary = function (number) {
@@ -73,5 +53,5 @@ export const crc = function (mesaj, polinom) {
     console.log(rest_binary);
   }
 
-  return toBinary(toDecimal(mesaj_extins) ^ toDecimal(rest_binary)); // 100 1010 0001
+  return toBinary(xor(toDecimal(mesaj_extins), toDecimal(rest_binary))); // 100 1010 0001
 };
